@@ -7,7 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1ltlJi0MdG6JZUBuIfdrSl0EAF2NSJwN9
 """
 
-pip install flask-cors
+
 
 from flask import Flask, request, jsonify
 from flask_cors import CORS
