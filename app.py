@@ -21,6 +21,11 @@ import os
 app = Flask(__name__)
 CORS(app)  # Enable CORS for frontend
 
+# Home route
+@app.route('/')
+def home():
+    return "🎉 Welcome to the Student Dropout Prediction API! Use /predict to POST student data."
+
 # Set up logging (console logging so Render can capture logs)
 logging.basicConfig(
     level=logging.INFO,
@@ -35,7 +40,6 @@ try:
 except Exception as e:
     logger.error(f"❌ Failed to load model: {str(e)}")
     raise
-
 
 # Suggestion function
 def get_suggestions(student, predicted_prob):
@@ -110,7 +114,6 @@ def get_suggestions(student, predicted_prob):
 
     return suggestions
 
-
 # Prediction API
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -149,7 +152,6 @@ def predict():
     except Exception as e:
         logger.error(f"Error processing request: {str(e)}")
         return jsonify({'error': str(e)}), 500
-
 
 if __name__ == "__main__":
     # Render provides PORT environment variable
